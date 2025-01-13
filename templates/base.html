@@ -1,16 +1,53 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>{% block title %}DORM MATCH{% endblock title %}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Dorm Match{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="{% url 'home' %}">
+                    <img src="{% static 'images/logo.png' %}" alt="DormMatch Logo">
+                </a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="{% url 'home' %}" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+                <li><a href="{% url 'waitlist' %}"
+                        class="{% if request.path == '/waitlist/' %}active{% endif %}">Waitlist</a></li>
+                <li><a href="{% url 'solodorm' %}" class="{% if request.path == '/solodorm/' %}active{% endif %}">Solo
+                        Dorm</a></li>
+                <li><a href="{% url 'aboutus' %}" class="{% if request.path == '/aboutus/' %}active{% endif %}">About
+                        Us</a></li>
+            </ul>
+            <div class="auth-buttons">
+                {% if user.is_authenticated %}
+                <span class="user-name">{{ user.first_name }} {{ user.last_name }}</span>
+                <a href="{% url 'logout' %}" class="logout-btn">Log Out</a>
+                {% else %}
+                <a href="{% url 'login' %}" class="login-btn">Log in</a>
+                <a href="{% url 'signup' %}" class="signup-btn">Sign up</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
     <main>
         {% block content %}
-        {% endblock content %}
+        {% endblock %}
     </main>
+
+    <footer>
+        <p>&copy; 2024 DormMatch. All rights reserved.</p>
+    </footer>
 </body>
 
 </html>

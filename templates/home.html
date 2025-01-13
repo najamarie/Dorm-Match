@@ -1,13 +1,81 @@
-<!-- templates/home.html-->
 {% extends "base.html" %}
-{% block title %}Dorm Match{% endblock title %}
+
+{% block title %}Home{% endblock %}
+{% load static %}
 {% block content %}
 {% if user.is_authenticated %}
-{{ user.first_name }} {{ user.last_name }}
-<p><a href="{% url 'logout' %}">Log Out</a></p>
 {% else %}
-<p>You are not logged in</p>
-<a href="{% url 'login' %}">Log In</a> |
-<a href="{% url 'signup' %}">Sign Up</a>
+
 {% endif %}
-{% endblock content %}
+
+<section class="hero">
+    <h1>Welcome to DormMatch!</h1>
+    <p>
+        DormMatch is a platform designed to ensure a stress-free booking experience, simplifying the roommate selection
+        process with a waitlisting feature while prioritizing students’ needs and convenience.
+    </p>
+</section>
+
+<section class="dorm-types">
+    <div class="dorm-row">
+        <div class="dorm-box">
+            <img src="{% static 'images/class-a-shared.jpg' %}" alt="Class A Shared Dorm">
+            <div class="card-content">
+                <h2>Class A Shared Dorm</h2>
+                <p>40 square meters room is divided into four sections, each with a bed, and featuring two bathrooms,
+                    and a balcony.</p>
+                <p><strong>Price:</strong> ₱18,000.00</p>
+                <p><strong>Capacity:</strong> 4</p>
+            </div>
+        </div>
+        <div class="dorm-box">
+            <img src="{% static 'images/class-b-shared.png' %}" alt="Class B Shared Dorm">
+            <div class="card-content">
+                <h2>Class B Shared Dorm</h2>
+                <p>35 square meters room divided into four sections, each with a bed, and featuring two bathrooms.</p>
+                <p><strong>Price:</strong> ₱14,000.00</p>
+                <p><strong>Capacity:</strong> 4</p>
+            </div>
+        </div>
+    </div>
+    <div class="dorm-row">
+        <div class="dorm-box">
+            <img src="{% static 'images/class-a-solo.jpg' %}" alt="Class A Solo Dorm">
+            <div class="card-content">
+                <h2>Class A Solo Dorm</h2>
+                <p>40 square meters room with a private bathroom and balcony.</p>
+                <p><strong>Price:</strong> ₱16,000.00</p>
+                <p><strong>Capacity:</strong> 1</p>
+            </div>
+        </div>
+        <div class="dorm-box">
+            <img src="{% static 'images/class-b-solo.jpg' %}" alt="Class B Solo Dorm">
+            <div class="card-content">
+                <h2>Class B Solo Dorm</h2>
+                <p>35 square meters room with a private bathroom.</p>
+                <p><strong>Price:</strong> ₱12,000.00</p>
+                <p><strong>Capacity:</strong> 1</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="mission-vision">
+    <h2>Mission and Vision</h2>
+    <p>
+        To revolutionize student housing in Sta. Mesa by creating an innovative, user-friendly dormitory reservation
+        system that ensures seamless access,
+        unparalleled convenience, and a supportive community environment. Our long-term objective is to become the go-to
+        platform for students seeking
+        reliable, modern, and secure accommodations, fostering a vibrant community that enhances the overall student
+        experience and success.
+    </p>
+    <p>
+        Our mission is to provide a streamlined and efficient dormitory reservation system that prioritizes student
+        needs through modern technology and a
+        transparent waitlist feature. We aim to achieve this by enhancing accessibility, ensuring reliability, and
+        prioritizing convenience.
+    </p>
+</section>
+
+{% endblock %}
